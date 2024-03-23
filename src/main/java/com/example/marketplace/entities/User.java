@@ -23,4 +23,6 @@ public class User {
     @ManyToMany()
     private List<Product> favoriteProducts;
 
+    @OneToMany
+    private List<Basket> baskets;
 }
