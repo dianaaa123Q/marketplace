@@ -3,7 +3,6 @@ package com.example.marketplace.controllers;
 import com.example.marketplace.dto.UserRequest;
 import com.example.marketplace.dto.UserResponse;
 import com.example.marketplace.service.UserService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
