@@ -1,19 +1,23 @@
 package com.example.marketplace.service.impl;
 
 import com.example.marketplace.dto.UserRequest;
+import com.example.marketplace.dto.UserResponse;
 import com.example.marketplace.entities.User;
 import com.example.marketplace.exception.BadRequestException;
+import com.example.marketplace.mapper.UserMapper;
 import com.example.marketplace.repositories.UserRepository;
 import com.example.marketplace.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
     @Override
     public void add(UserRequest request) {
         if (userRepository.findByEmail(request.getEmail()).isPresent())
@@ -28,5 +32,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Long userId) {
         userRepository.deleteById(userId);
+    }
+
+    @Override
+    public List<UserResponse> getAll() {
+        return userMapper.toDtoS(userRepository.findAll());
+    }
+
+    @Override
+    public UserResponse byId(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isEmpty())
+            throw new BadRequestException("user with this id is already exist! "+ userId);
+        return userMapper.toDto(user.get());
     }
 }

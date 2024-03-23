@@ -3,6 +3,8 @@ package com.example.marketplace.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class UserResponse {
@@ -10,5 +12,8 @@ public class UserResponse {
     private String lastname;
     private String email;
 
+    private List<ProductResponse> userProducts;
+    private List<ProductResponse> userFavorites;
+    private List<BasketResponse> basketResponses;
 
 }
