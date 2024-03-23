@@ -15,4 +15,6 @@ public interface ProductService {
     ProductResponse byId(Long productId);
 
     void update(Long productId, ProductRequest request);
+
+    void addToFavorite(Long userId, Long productId);
 }

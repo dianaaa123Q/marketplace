@@ -2,6 +2,7 @@ package com.example.marketplace.controllers;
 
 import com.example.marketplace.dto.ProductRequest;
 import com.example.marketplace.dto.ProductResponse;
+import com.example.marketplace.service.BasketService;
 import com.example.marketplace.service.ProductService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     private final ProductService productService;
+    private final BasketService basketService;
 
     @PostMapping("/add")
     public void add(@RequestBody ProductRequest request){
@@ -34,5 +36,15 @@ public class ProductController {
     @PutMapping("/update/{productId}")
     public void update(@PathVariable Long productId, @RequestBody ProductRequest request){
         productService.update(productId, request);
+    }
+
+    @PostMapping("/basket/add/{userId}/{productId}")
+    public void addToBasket(@PathVariable Long userId, @PathVariable Long productId){
+        basketService.add(userId, productId);
+    }
+
+    @PostMapping("/favorite/add/{userId}/{productId}")
+    public void addToFavorite(@PathVariable Long userId, @PathVariable Long productId){
+        productService.addToFavorite(userId, productId);
     }
 }
