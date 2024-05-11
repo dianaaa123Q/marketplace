@@ -1,5 +1,7 @@
 package com.example.marketplace.controllers;
 
+import com.example.marketplace.dto.LoginRequest;
+import com.example.marketplace.dto.LoginResponse;
 import com.example.marketplace.dto.UserRequest;
 import com.example.marketplace.dto.UserResponse;
 import com.example.marketplace.service.UserService;
@@ -12,6 +14,23 @@ import java.util.List;
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
+
+    @PostMapping("/register")
+    public void register(@RequestBody UserRequest request){
+        userService.register(request);
+    }
+
+    @GetMapping("/confirm")
+    public String confirm(@RequestParam String confirmCode){
+        return userService.confirm(confirmCode);
+    }
+
+
+    @PostMapping("/login")
+    public LoginResponse login(@RequestBody LoginRequest request){
+        return userService.login(request);
+    }
+
 
     private final UserService userService;
     @PostMapping("/add")
