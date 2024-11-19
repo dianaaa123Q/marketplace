@@ -8,3 +8,8 @@
   Framework: Spring
   Database: Postgresql
 <img width="1457" alt="Screen Shot 2024-03-24 at 20 00 47" src="https://github.com/dianaaa123Q/marketplace/assets/149644313/cf8fe42f-019c-4bc0-89e9-e24228b3d7b0">
+
+
+
+DOCUMENT
+ https://docs.google.com/document/d/1LR24P7Qm7rESZGnz4OjRofkHzHUrzDg8hhnWvtAY33I/edit?tab=t.0
